@@ -24,15 +24,16 @@ public class BenzApplicationTest extends TestBase {
 		public void login() throws Exception
 		{			
 			hp.BookTestDrive();		
-	        assertNotEquals("Vehicle highest and lowestprice is saved in the prices.txt in artifacts folder", highestPrice, lowestPrice);
+			assertNotEquals("Vehicle highest and lowestprice is saved in the prices.txt in artifacts folder", highestPrice, lowestPrice);
 		}
+		
 
 		
 		@AfterTest
 		public void close()
 		{
-			driver.close();
-		
+			
+			driver.quit();
 		
 		}
 }

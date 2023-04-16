@@ -50,7 +50,7 @@ public class HomePage extends TestBase {
 		//Elements are under shadow-root, we have to call first parent of shadow root 
 			   //getshadowroot and with its instance main element would be called
 			   
-	           //cookies accept shadow root element
+	           //cookies accept all
 				WebElement shadowHost = driver.findElement(shadowCookies);
 				SearchContext shadowRoot = shadowHost.getShadowRoot();
 				WebElement acceptCookies = shadowRoot.findElement(cookiesBanner);
@@ -71,21 +71,20 @@ public class HomePage extends TestBase {
 				Actions actions = new Actions(driver); 
 		  		actions.moveToElement(selectHatchBacks).click().perform();
 		     
-		  		
+		  		Thread.sleep(2000);
 				
-				//Webdriverwait and click on A-class hatchbacks
-		  		WebelementWaitFromBase(shadowRoot2.findElement(clickAClassModels));
+				// click on A-class hatchbacks
 		  		WebElement selectAClassHatchBacks = shadowRoot2.findElement(clickAClassModels);
 		  		actions.moveToElement(selectAClassHatchBacks).click().perform();
 		  		
 		  		
-		  		//click on build your car
+		  		//click on build your car button
 		  		WebElement shadowHost4 = driver.findElement(shadowBuildCar);
 				SearchContext shadowRoot4 = shadowHost4.getShadowRoot();
 				WebElement buildCar= shadowRoot4.findElement(clickBuildCar);
 				buildCar.click();
 				
-				//implicit wait doesn't working for shadow-root instance
+				//implicit wait doesn't working for shadow-root instance,its work only for driver instance
 				Thread.sleep(3000);
 				
 				//scroll down the page
@@ -95,13 +94,11 @@ public class HomePage extends TestBase {
 				Thread.sleep(2000);
 				
 				
-				//selecting the filter
+				//click on fueltype(main element is inside two shadowroots)
 		        WebElement shadowHost5 = driver.findElement(parentShadow);
 				SearchContext shadowRoot5 = shadowHost5.getShadowRoot();
 				WebElement fuelFilter = shadowRoot5.findElement(shadowFueltype);
 				SearchContext shadowRoot6 = fuelFilter.getShadowRoot();
-				
-				//click on fueltype
 				WebElement clickFilter = shadowRoot6.findElement(clickFuelType);
 				actions.moveToElement(clickFilter).click().perform();
 				
